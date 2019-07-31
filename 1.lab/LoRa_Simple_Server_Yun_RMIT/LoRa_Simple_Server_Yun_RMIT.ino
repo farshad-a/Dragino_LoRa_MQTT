@@ -1,27 +1,4 @@
-/*
-  LoRa Simple Yun Server :
-  Support Devices: LG01. 
-  
-  Example sketch showing how to create a simple messageing server, 
-  with the RH_RF95 class. RH_RF95 class does not provide for addressing or
-  reliability, so you should only use RH_RF95 if you do not need the higher
-  level messaging abilities.
-
-  It is designed to work with the other example LoRa Simple Client
-
-  User need to use the modified RadioHead library from:
-  https://github.com/dragino/RadioHead
-
-  modified 16 11 2016
-  by Edwin Chen <support@dragino.com>
-  Dragino Technology Co., Limited
-*/
-//If you use Dragino IoT Mesh Firmware, uncomment below lines.
-//For product: LG01. 
 #define BAUDRATE 115200
-
-//If you use Dragino Yun Mesh Firmware , uncomment below lines. 
-//#define BAUDRATE 250000
 
 #include <Console.h>
 #include <SPI.h>
@@ -42,10 +19,10 @@ void setup()
   Console.println("Start Sketch");
   if (!rf95.init())
     Console.println("init failed");
-  // Setup ISM frequency
+
   rf95.setFrequency(frequency);
   // Setup Power,dBm
-  rf95.setTxPower(13);
+  rf95.setTxPower(3);
   
   // Setup Spreading Factor (6 ~ 12)
   rf95.setSpreadingFactor(7);
@@ -77,7 +54,7 @@ void loop()
       Console.println(rf95.lastRssi(), DEC);
       
       // Send a reply
-      uint8_t data[] = "And hello back to you";
+      uint8_t data[] = "And hello back to you Group 1";
       rf95.send(data, sizeof(data));
       rf95.waitPacketSent();
       Console.println("Sent a reply");
