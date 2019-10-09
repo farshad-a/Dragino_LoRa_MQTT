@@ -1,4 +1,4 @@
-# MessagePack Encoded LoRa Messages
+# MessagePack Encoded LoRa Packets
 
 ![alt text](https://raw.githubusercontent.com/fash-aryan/EEET2371-WSNs/master/mini-project/figures/mini-project.jpg?token=AID7VE2Y5P4O2CCPGHMJJA25U3HOS)
 Provide an introductory paragraph, describing:
