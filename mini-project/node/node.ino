@@ -46,7 +46,7 @@ void loop()
   doc["ph"] = String(DHT.humidity);
   //doc["mb"] = sizeof doc message
   serializeJson(doc, buf_send, RH_RF95_MAX_MESSAGE_LEN);          //ASCII Encoded JSON
-  //serializeMsgPack(doc, data_send, RH_RF95_MAX_MESSAGE_LEN);    //MessagePack Encoded JSON
+  //serializeMsgPack(doc, buf_send, RH_RF95_MAX_MESSAGE_LEN);    //MessagePack Encoded JSON
   doc.clear();
 
   rf95.send(buf_send, sizeof(buf_send));

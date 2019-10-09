@@ -1,10 +1,13 @@
-# Project Title
+# MessagePack Encoded LoRa Messages
 
 Provide an introductory paragraph, describing:
 
-* What your project does
-* Why people should consider using your project
-* Link to project home page
+* MessagePack or ASCII encoded JSON measurement data.
+* Dockerized InfuxDB, Mosquitto MQTT Broker, Node-RED, and Grafana.
+* InfluxDB as the time series database.
+* Grafana as the visualization platform.
+* Mosquitto MQTT Broker to subscribe and publish LoRa Node measurement and actuation data.
+* Node-RED as the flow programming language for creating visual flows.
 
 ## Table of Contents
 
@@ -27,7 +30,8 @@ Provide an introductory paragraph, describing:
 
 # About the Project
 
-Here you can provide more details about the project
+In this project, the DH11 temperature and humidity sensor data is collected and sent in JSON format to LG01 LoRa gateway. The JSON Format can be encoded as ASCII or MessagePack.
+
 * What features does your project provide?
 * Short motivation for the project? (Don't be too long winded)
 * Links to the project site
