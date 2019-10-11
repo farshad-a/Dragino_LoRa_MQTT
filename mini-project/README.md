@@ -15,157 +15,85 @@ Provide an introductory paragraph, describing:
 1. [About the Project](#about-the-project)
 1. [Project Status](#project-status)
 1. [Getting Started](#getting-started)
-    1. [Dependencies](#dependencies)
-    1. [Building](#building)
-    1. [Installation](#installation)
-    1. [Usage](#usage)
-1. [Release Process](#release-process)
-    1. [Versioning](#versioning)
-    1. [Payload](#payload)
-1. [How to Get Help](#how-to-get-help)
+    1. [Docker Images and Containers](#docker-images-and-containers)
+    1. [Node-RED Flows](#node-red-flows)
+    1. [InfluxDB Database](#influxdb-database)
+    1. [Grafana Visualization](#grafana-virtualization)
 1. [Further Reading](#further-reading)
-1. [Contributing](#contributing)
-1. [License](#license)
-1. [Authors](#authors)
 1. [Acknowledgements](#acknowledgements)
 
 # About the Project
 
-In this project, the DH11 temperature and humidity sensor data is collected and sent in JSON format to LG01 LoRa gateway. The JSON Format can be encoded as ASCII or MessagePack.
+In this project, the DHT11 temperature and humidity sensor data is collected and sent in JSON format to LG01 LoRa gateway. The JSON Format can be encoded as ASCII or MessagePack.
 
-* What features does your project provide?
-* Short motivation for the project? (Don't be too long winded)
-* Links to the project site
+* The [ArduinoJson](https://arduinojson.org/) library is used for de/serializing JSON.
+* ArduinoJson library includes a MessagePack de/serializer.
+* Visit [msgpack.org](https://msgpack.org) to learn more.
 
 ```
-Show some example code to describe what your project does
-Show some of your APIs
+serializeJson(doc, buf_send, RH_RF95_MAX_MESSAGE_LEN);          //ASCII Encoded JSON buf_send
+serializeMsgPack(doc, buf_send, RH_RF95_MAX_MESSAGE_LEN);    //MessagePack Encoded JSON buf_send
 ```
-
-**[Back to top](#table-of-contents)**
 
 # Project Status
 
-Show the build status if you have a CI server:
-
-[![Build Status](http://your-server:12345/job/badge/icon)](http://your-server:12345/job/http://your-server:12345/job/badge/icon/)
-
-Describe the current release and any notes about the current state of the project. Examples: currently compiles on your host machine, but is not cross-compiling for ARM, APIs are not set, feature not implemented, etc.
-
-**[Back to top](#table-of-contents)**
+The provided code should not be used in production and can only be used for proof-of-concept validation.
 
 # Getting Started
 
-This section should provide instructions for other developers to
+### Prerequisites
+Before starting this project:
+- [Docker](https://www.docker.com/) has to be up and running on your device.
+- Installing [Dragino](http://www.dragino.com/downloads/downloads/UserManual/LG01_LoRa_Gateway_User_Manual.pdf) libraries in Arduino IDE.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## Dependencies
+## Docker Images and Containers
 
-Describe what software and libraries you will need to install in order to build and use this project. Provide details on how to resolve these dependencies.
+Run the following commands in your terminal to download the required images and then build the containers.
 
-Remember: git-lfs is a dependency that developers will need to resolve before they can get started with a repo using LFS.
+### Eclipse Mosquitto MQTT Broker
+
 
 ```
-Examples should be included
+docker pull eclipse-mosquitto
+docker run -it -p 1883:1883 --name <influxdb container name> eclipse-mosquitto
 ```
 
-## Getting the Source
-
-Include a link to your github reposistory (you have no idea how people will findy our code), and also a summary of how to clone.
-
-
-This project is [hosted on GitHub](https://github.com/embeddedartistry/embedded-resources). You can clone this project directly using this command:
-
+### Node-RED
 ```
-git clone git@github.com:embeddedartistry/embedded-resources.git
+docker pull nodered/node-red
+docker run -it -p 1880:1880 --name <nodered container name> nodered/node-red
 ```
 
-## Building
-
-Instructions for how to build your project
+### InfluxDB
+The '-v' option stores InfluxDB data into a docker volume in $PWD directory.
+```
+docker pull influxdb
+docker run -p 8086:8086 --name <influxdb container name> -v $PWD:/var/lib/influxdb influxdb
 
 ```
-Examples should be included
+$PWD is replaced by the current directory that your terminal run in. You can change this directory by replacing it from $PWD to your preferred directory.
+
+### Grafana
+```
+docker pull grafana/grafana
+docker run -d -p 3000:3000 --name=mygrafana grafana/grafana
 ```
 
-## Running Tests
+## Node-RED Flows
 
-Describe how to run unit tests for your project.
 
-```
-Examples should be included
-```
+## InfluxDB Database
 
-### Other Tests
 
-If you have formatting checks, coding style checks, or static analysis tests that must pass before changes will be considered, add a section for those and provide instructions
+## Grafana Visualization
 
-## Installation
 
-Instructions for how to install your project's build artifacts
+## Dragino LoRa End Node - Arduino
 
-```
-Examples should be included
-```
-
-## Usage
-
-Instructions for using your project. Ways to run the program, how to include it in another project, etc.
-
-```
-Examples should be included
-```
-
-If your project provides an API, either provide details for usage in this document or link to the appropriate API reference documents
-
-**[Back to top](#table-of-contents)**
-
-# Release Process
-
-Talk about the release process. How are releases made? What cadence? How to get new releases?
-
-## Versioning
-
-This project uses [Semantic Versioning](http://semver.org/). For a list of available versions, see the [repository tag list](https://github.com/your/project/tags).
-
-## Payload
-
-**[Back to top](#table-of-contents)**
-
-# How to Get Help
-
-Provide any instructions or contact information for users who need to get further help with your project.
-
-# Contributing
-
-Provide details about how people can contribute to your project. If you have a contributing guide, mention it here. e.g.:
-
-We encourage public contributions! Please review [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details on our code of conduct and development process.
-
-**[Back to top](#table-of-contents)**
+## Dragino LG01 Gateway - Arduino
 
 # Further Reading
-
-Provide links to other relevant documentation here
-
-**[Back to top](#table-of-contents)**
-
-# License
-
-Copyright (c) 2017 Embedded Artistry LLC
-
-This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) file for details.
-
-**[Back to top](#table-of-contents)**
-
-# Authors
-
-* **[Phillip Johnston](https://github.com/phillipjohnston)** - *Initial work* - [Embedded Artistry](https://github.com/embeddedartistry)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-**[Back to top](#table-of-contents)**
 
 # Acknowledgments
 
