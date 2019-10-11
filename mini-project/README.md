@@ -84,7 +84,10 @@ docker run -d -p 3000:3000 --name=mygrafana grafana/grafana
 
 
 ## InfluxDB Database
-
+| time          | id               |humidity            | temperature               |
+|---------------|----------------- |--------------------|---------------------------|
+| 1569988251974 |100               |26.00               |27.00                      |
+| 1570594982609 |200               |24.00               |30.00                      |
 
 ## Grafana Visualization
 
