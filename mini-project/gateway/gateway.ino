@@ -81,22 +81,18 @@ void loop()
   thisString = ""; 
 }
 
-String string_data() // char array to string
-{
-    String sData = buf_receive;
-    return sData;
-}
 
 void mqtt_publish()
 {
   Process p;    // Create a process and call it "p"
+  String sData = buf_receive;
   p.begin("mosquitto_pub"); // Process that launch the "mosquitto_pub" command
   p.addParameter("-h");
   p.addParameter("10.130.1.202");
   p.addParameter("-p");
   p.addParameter("1883");
   p.addParameter("-m");
-  p.addParameter(string_data());  // Add data to publish
+  p.addParameter(sData);  // Add data to publish
   p.addParameter("-t");
   p.addParameter("measurement");    // Publish to this topic
   p.run();    // Run the process and wait for its termination
