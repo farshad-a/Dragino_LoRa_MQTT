@@ -1,6 +1,6 @@
 # MessagePack Encoded LoRa Packets
 
-![alt text](https://github.com/fash-aryan/EEET2371-WSNs/blob/master/mini-project/figures/mini-project.jpg?raw=true)
+![alt text](https://github.com/fash-aryan/EEET2371-WSNs/blob/master/mini-project/figures/mini-project.jpg?raw=false)
 Provide an introductory paragraph, describing:
 
 * MessagePack or ASCII encoded JSON measurement data.
@@ -15,6 +15,7 @@ Provide an introductory paragraph, describing:
 1. [About the Project](#about-the-project)
 1. [Project Status](#project-status)
 1. [Getting Started](#getting-started)
+    1. [Network and Communication Topology](#network-and-communication-topology)
     1. [Docker Images and Containers](#docker-images-and-containers)
     1. [Node-RED Flows](#node-red-flows)
     1. [InfluxDB Database](#influxdb-database)
@@ -37,7 +38,8 @@ serializeMsgPack(doc, buf_send, RH_RF95_MAX_MESSAGE_LEN);    //MessagePack Encod
 
 # Project Status
 
-The provided code should not be used in production and can only be used for proof-of-concept validation.
+- The provided LoRa-MQTT implementation should not be used in production and can only be used for proof-of-concept validation.
+- LoRa network redundant packet filteration is not implemented when multiple LoRa gateways is used.
 
 # Getting Started
 
@@ -46,6 +48,7 @@ Before starting this project:
 - [Docker](https://www.docker.com/) has to be up and running on your device.
 - Installing [Dragino](http://www.dragino.com/downloads/downloads/UserManual/LG01_LoRa_Gateway_User_Manual.pdf) libraries in Arduino IDE.
 
+## Network and Communication Topology
 
 ## Docker Images and Containers
 
