@@ -49,6 +49,7 @@ Before starting this project:
 - Installing [Dragino](http://www.dragino.com/downloads/downloads/UserManual/LG01_LoRa_Gateway_User_Manual.pdf) libraries in Arduino IDE.
 
 ## Network and Communication Topology
+![alt text](https://github.com/fash-aryan/EEET2371-WSNs/blob/master/mini-project/figures/topology.jpg?raw=true)
 
 ## Docker Images and Containers
 
