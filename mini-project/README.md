@@ -104,8 +104,4 @@ docker run -d -p 3000:3000 --name=mygrafana grafana/grafana
 
 # Acknowledgments
 
-Provide proper credits, shoutouts, and honorable mentions here. Also provide links to relevant repositories, blog posts, or contributors worth mentioning.
-
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contributed in this project. If you used external code, link to the original source.
-
 **[Back to top](#table-of-contents)**
