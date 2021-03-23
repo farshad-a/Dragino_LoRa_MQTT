@@ -2,10 +2,10 @@
 
 <img src="mini-project/figures/mini-project.jpg">
 
-Provide an introductory paragraph, describing:
+LoRa project features:
 
-* MessagePack or ASCII encoded JSON measurement data.
-* Dockerized InfuxDB, Mosquitto MQTT Broker, Node-RED, and Grafana.
+* Send and Receive MessagePack or ASCII encoded JSON measurement data.
+* Dockerised InfuxDB, Mosquitto MQTT Broker, Node-RED, and Grafana.
 * InfluxDB as the time series database.
 * Grafana as the visualization platform.
 * Mosquitto MQTT Broker to subscribe and publish LoRa Node measurement and actuation data.
@@ -87,6 +87,7 @@ docker run -d -p 3000:3000 --name=mygrafana grafana/grafana
 
 ## Node-RED Flows
 
+<img src="mini-project/figures/node-red.png">
 
 ## InfluxDB Database
 | time          | id               |humidity            | temperature               |
@@ -96,13 +97,6 @@ docker run -d -p 3000:3000 --name=mygrafana grafana/grafana
 
 ## Grafana Visualization
 
-
-## Dragino LoRa End Node - Arduino
-
-## Dragino LG01 Gateway - Arduino
-
-# Further Reading
-
-# Acknowledgments
+<img src="mini-project/figures/grafana.png">
 
 **[Back to top](#table-of-contents)**
