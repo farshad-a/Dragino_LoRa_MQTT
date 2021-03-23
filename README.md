@@ -21,8 +21,6 @@ LoRa project features:
     1. [Node-RED Flows](#node-red-flows)
     1. [InfluxDB Database](#influxdb-database)
     1. [Grafana Visualization](#grafana-virtualization)
-1. [Further Reading](#further-reading)
-1. [Acknowledgements](#acknowledgements)
 
 # About the Project
 
